@@ -7,7 +7,7 @@ Please check for the following requirements:
 
 #### Changes
 
-- Replace this text with whatever you want added to the:
+- Replace with changes made
 
 #### Change Details
 
