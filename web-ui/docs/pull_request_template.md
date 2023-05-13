@@ -16,8 +16,7 @@ Please check for the following requirements:
 
 #### What is the current behavior?
 
-- Issue or Ticket: https://travelingbookclub.atlassian.net/browse/%5Bticket-number%5D
-
+- [Ticket](https://travelingbookclub.atlassian.net/browse/tbc-[ticketNumber])
 - [ ] Another developer ran through the acceptance criteria locally (bugs fixes and features)
 - [ ] I ran through the acceptance criteria locally (bugs fixes and features)
 - [ ] I have added tests for meeting the acceptance criteria (bugs fixes and features)
