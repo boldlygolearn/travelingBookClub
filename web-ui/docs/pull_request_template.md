@@ -9,10 +9,6 @@ Please check for the following requirements:
 
 - Replace with changes made
 
-#### Change Details
-
-- Communicate any extra details here that you would like to retain for posterity, if desired
-
 ##### Does this PR introduce a breaking change?
 
 - [ ] Yes
@@ -20,9 +16,7 @@ Please check for the following requirements:
 
 #### What is the current behavior?
 
-- Issue or Ticket:
-
-#### What is the new behavior?
+- Issue or Ticket: https://travelingbookclub.atlassian.net/browse/%5Bticket-number%5D
 
 - [ ] Another developer ran through the acceptance criteria locally (bugs fixes and features)
 - [ ] I ran through the acceptance criteria locally (bugs fixes and features)
