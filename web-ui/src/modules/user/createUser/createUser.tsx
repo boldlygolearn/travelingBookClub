@@ -1,7 +1,14 @@
-import { Typography } from "@mui/material";
+import { Link, Stack, Typography } from "@mui/material";
 
 const CreateUser = () => {
-  return <Typography>Create Account</Typography>;
+  return (
+    <Stack>
+      <Typography variant="h1">Create Account</Typography>
+      <Link href="/create-account" underline="none">
+        Login
+      </Link>
+    </Stack>
+  );
 };
 
 export default CreateUser;
