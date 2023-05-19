@@ -4,7 +4,7 @@ const CreateUser = () => {
   return (
     <Stack>
       <Typography variant="h1">Create Account</Typography>
-      <Link href="/create-account" underline="none">
+      <Link href="/" underline="none">
         Login
       </Link>
     </Stack>
