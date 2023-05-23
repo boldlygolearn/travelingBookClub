@@ -5,9 +5,6 @@ router.post("/register", async (req, res) => {
   try {
     const { firstName, lastName, email } = req.body;
     if (!firstName || !lastName || !email) {
-      res.status(406).json({
-        message: "Invalid",
-      });
       throw new Error("The user schema is not complete");
     }
     const newUser = new User({
@@ -28,3 +25,5 @@ router.post("/register", async (req, res) => {
     });
   }
 });
+
+module.exports = router;

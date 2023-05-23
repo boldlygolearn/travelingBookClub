@@ -1,4 +1,5 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const app = express();
 const cors = require("cors");
 require("dotenv").config();
@@ -6,8 +7,10 @@ app.use(cors());
 app.use(express.json());
 
 const source = process.env.ATLAS_CONNECTION;
+const PORT = 4000;
 
-const mongoose = require("mongoose");
+const authController = require("./controllers/Auth");
+app.use("/user", authController);
 mongoose.connect(source, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -18,6 +21,6 @@ connection.once("open", () => {
   console.log("DB connected.");
 });
 
-app.listen(() => {
-  console.log(`hello`);
+app.listen(PORT, () => {
+  console.log(`app is running on ${PORT}`);
 });
