@@ -9,7 +9,7 @@ app.use(express.json());
 const source = process.env.ATLAS_CONNECTION;
 const PORT = 4000;
 
-const authController = require("./controllers/Auth");
+const authController = require("./controllers/auth");
 app.use("/user", authController);
 mongoose.connect(source, {
   useNewUrlParser: true,
