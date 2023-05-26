@@ -1,10 +1,11 @@
-import { Button, Link, Stack, TextField, Typography } from "@mui/material";
+import { Link, Stack, Typography } from "@mui/material";
+import { NavLink } from "react-router-dom";
 
 const Login = () => {
   return (
     <Stack>
       <Typography variant="h1">Login</Typography>
-      <Link href="/create-account" underline="none">
+      <Link to="/create-account" underline="none" component={NavLink}>
         Create account
       </Link>
     </Stack>
