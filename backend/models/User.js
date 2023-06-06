@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const bcrypt = require('bcrypt');
+
 const UserSchema = new mongoose.Schema({
   firstName: {
     type: String,
@@ -16,13 +18,18 @@ const UserSchema = new mongoose.Schema({
     unique: true,
     match: [/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/, "Please enter a valid email"],
     lowercase: true,
-    // validate: [()]
   },
   password: {
     type: String,
     required: [true, "Please enter your password"],
     minlength: [8, "Minimum password length is 8 characters"],
   },
+});
+
+UserSchema.pre('save', async function(next) {
+  const salt = await bcrypt.genSalt();
+  this.password = await bcrypt.hash(this.password, salt);
+  next();
 });
 
 module.exports = mongoose.model("user", UserSchema);
