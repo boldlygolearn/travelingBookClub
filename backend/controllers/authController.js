@@ -60,8 +60,6 @@ module.exports.login_post = async (req, res) => {
       email: user.email,
     });
   } catch (error) {
-    console.log("error", error);
-
     const errors = handleErrors(error);
     res.status(400).json({
       errors,
