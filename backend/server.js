@@ -9,8 +9,10 @@ app.use(express.json());
 const source = process.env.ATLAS_CONNECTION;
 const PORT = 4000;
 
-const authController = require("./controllers/auth");
+const authController = require("./routes/authRoutes");
+
 app.use("/user", authController);
+
 mongoose.connect(source, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
