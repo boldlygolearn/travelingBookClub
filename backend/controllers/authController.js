@@ -39,7 +39,7 @@ module.exports.login_post = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(404).json({
-        message: "User not found",
+        email: "Email not found",
       });
     }
     const passwordMatch = await user.matchPassword(password);
@@ -52,7 +52,7 @@ module.exports.login_post = async (req, res) => {
       });
     } else {
       return res.status(401).json({
-        message: "Invalid password",
+        password: "Invalid password",
       });
     };
   } catch (error) {
