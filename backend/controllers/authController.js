@@ -1,12 +1,9 @@
 const User = require("../models/User");
 
 const handleErrors = (err) => {
-
-  console.log("err", err);
   if (err.code === 11000) {
     return { email: 'Email is already registered' };
   }
-
 return  Object.keys(err.errors).reduce((acc, key) => {
     acc[key] = err.errors[key].message;
   return acc;
