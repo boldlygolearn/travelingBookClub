@@ -9,7 +9,7 @@ const handleErrors = (err) => {
   const errorKeys = Object.keys(err.errors)
   if (errorKeys.length){
     return {
-      message: "Unknown error"
+      message: err
     }
   }
 
