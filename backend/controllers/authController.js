@@ -1,19 +1,14 @@
 const User = require("../models/User");
-const { default: createToken } = require('../authentication/createToken');
+const createToken = require('../authentication/createToken');
 
 const handleErrors = (err) => {
   if (err.code === 11000) {
     return { email: 'Email is already registered' };
   }
 
-  const errorKeys = Object.keys(err.errors)
-  if (errorKeys.length){
-    return {
-      message: err
-    }
-  }
+// TODO: see if there are keys in error object so db won't crash
 
-  return  errorKeys.reduce((acc, key) => {
+  return  Object.keys.reduce((acc, key) => {
     acc[key] = err.errors[key].message;
   return acc;
 }, {});
@@ -69,7 +64,7 @@ module.exports.login_post = async (req, res) => {
       const token = createToken(user._id);
       res.cookie('jwt', token, {
         httpOnly: true,
-        maxAge: process.env.JWT_EXPIRES_IN,
+        maxAge: 1000 * 60 * 24 * 90,
       });
       return res.status(200).json({
         status: "success",
