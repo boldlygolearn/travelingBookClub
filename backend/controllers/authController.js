@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const User = require("../models/User");
+const { default: createToken } = require('../authentication/createToken');
 
 const handleErrors = (err) => {
   if (err.code === 11000) {
@@ -28,11 +29,17 @@ module.exports.register_post = async (req, res) => {
       firstName,
       lastName,
     });
-    res.status(201).json({
-      userId: user._id,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
+    const token = createToken(user._id);
+    res.cookie('jwt', token, {
+      httpOnly: true,
+      // secure: true, // Use this if your app is using HTTPS
+      maxAge: process.env.JWT_EXPIRES_IN,
+    });
+   return res.status(201).json({
+      status: "success",
+      data: {
+        user
+      }
     });
   } catch (error) {
     const errors = handleErrors(error);
@@ -60,12 +67,13 @@ module.exports.login_post = async (req, res) => {
           email: loggedInUser.email,
       }
 
-      const token = jwt.sign({ userId:  loggedInUser._id }, process.env.JWT_SECRET, {
-        expiresIn: process.env.JWT_EXPIRES_IN,
+      const token = createToken(user._id);
+      res.cookie('jwt', token, {
+        httpOnly: true,
+        maxAge: process.env.JWT_EXPIRES_IN,
       });
       return res.status(200).json({
         status: "success",
-        token,
         data: {
           user
         }
