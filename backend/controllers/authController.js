@@ -55,13 +55,13 @@ module.exports.login_post = async (req, res) => {
     const passwordMatch = await loggedInUser.matchPassword(password);
     if (passwordMatch) {
       const user = {
-          userId: loggedInUser._id,
+          id: loggedInUser._id,
           firstName: loggedInUser.firstName,
           lastName: loggedInUser.lastName,
           email: loggedInUser.email,
       }
 
-      const token = createToken(user._id);
+      const token = createToken(user.id);
       res.cookie('jwt', token, {
         httpOnly: true,
         maxAge: 1000 * 60 * 24 * 90,
