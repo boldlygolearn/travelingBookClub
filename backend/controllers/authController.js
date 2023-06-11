@@ -54,22 +54,21 @@ module.exports.login_post = async (req, res) => {
     const passwordMatch = await loggedInUser.matchPassword(password);
     if (passwordMatch) {
       const user = {
-        userId: loggedInUser._id,
+          userId: loggedInUser._id,
           firstName: loggedInUser.firstName,
           lastName: loggedInUser.lastName,
           email: loggedInUser.email,
       }
-      const response = {
-        data: {
-          user
-        }
-      }
-      const token = jwt.sign({ ...response }, process.env.JWT_SECRET, {
+
+      const token = jwt.sign({ userId:  loggedInUser._id }, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRES_IN,
       });
       return res.status(200).json({
         status: "success",
         token,
+        data: {
+          user
+        }
       });
     } else {
       return res.status(401).json({
