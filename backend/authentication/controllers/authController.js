@@ -1,5 +1,5 @@
-const User = require("../models/User");
-const createToken = require('../authentication/createToken');
+const User = require("../../models/User");
+const createToken = require('../utils/createToken');
 
 const handleErrors = (err) => {
   if (err.code === 11000) {
