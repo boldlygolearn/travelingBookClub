@@ -37,11 +37,15 @@ const Login = () => {
   return (
     <Stack>
       <Stack mb={2}>
-        <Typography variant="h3" sx={{ alignSelf: "flex-start" }}>
+        <Typography
+          variant="h3"
+          component="h1"
+          sx={{ alignSelf: "flex-start" }}
+        >
           The
         </Typography>
         <Typography variant="h1">Traveling Book</Typography>
-        <Typography variant="h3" sx={{ alignSelf: "flex-end" }}>
+        <Typography variant="h3" component="h1" sx={{ alignSelf: "flex-end" }}>
           Club
         </Typography>
       </Stack>
@@ -85,12 +89,7 @@ const Login = () => {
       </form>
       <Stack direction="row" justifyContent="center">
         <Typography>Don't have an account?</Typography>
-        <Link
-          to="/create-account"
-          underline="none"
-          component={NavLink}
-          color="primary"
-        >
+        <Link ml={1} to="/create-account" underline="none" component={NavLink}>
           Create one
         </Link>
       </Stack>
