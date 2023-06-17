@@ -35,57 +35,44 @@ const Login = () => {
   }
 
   return (
-    <Stack>
-      <Stack mb={2}>
-        <Typography
-          variant="h3"
-          component="h1"
-          sx={{ alignSelf: "flex-start" }}
-        >
-          The
-        </Typography>
-        <Typography variant="h1">Traveling Book</Typography>
-        <Typography variant="h3" component="h1" sx={{ alignSelf: "flex-end" }}>
-          Club
-        </Typography>
-      </Stack>
+    <Stack spacing={2}>
       <form onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
-        <Controller
-          name="email"
-          control={control}
-          defaultValue=""
-          render={({ field }) => (
-            <TextField
-              {...field}
-              label="Email"
-              variant="outlined"
-              error={!!errors.email}
-              helperText={errors.email?.message}
-              fullWidth
-              sx={{ mb: 2 }}
-            />
-          )}
-        />
-        <Controller
-          name="password"
-          control={control}
-          defaultValue=""
-          render={({ field }) => (
-            <TextField
-              {...field}
-              type="password"
-              label="Password"
-              variant="outlined"
-              error={!!errors.password}
-              helperText={errors.password?.message}
-              fullWidth
-              sx={{ mb: 2 }}
-            />
-          )}
-        />
-        <Button type="submit" variant="contained" fullWidth sx={{ mb: 2 }}>
-          Login
-        </Button>
+        <Stack spacing={2}>
+          <Controller
+            name="email"
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <TextField
+                {...field}
+                label="Email"
+                variant="outlined"
+                error={!!errors.email}
+                helperText={errors.email?.message}
+                fullWidth
+              />
+            )}
+          />
+          <Controller
+            name="password"
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <TextField
+                {...field}
+                type="password"
+                label="Password"
+                variant="outlined"
+                error={!!errors.password}
+                helperText={errors.password?.message}
+                fullWidth
+              />
+            )}
+          />
+          <Button type="submit" variant="contained" fullWidth>
+            Login
+          </Button>
+        </Stack>
       </form>
       <Stack direction="row" justifyContent="center">
         <Typography>Don't have an account?</Typography>
