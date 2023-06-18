@@ -42,7 +42,15 @@ const CreateUser = () => {
   })
 
   const onSubmit = (data: FormData) => {
-    console.log(data)
+    try {
+      const res = fetch("http://localhost:4000/user/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
