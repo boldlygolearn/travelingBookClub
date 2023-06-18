@@ -37,12 +37,34 @@ const CreateUser = () => {
     control,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm<FormData>({
     resolver: yupResolver(schema),
   })
 
-  const onSubmit = (data: FormData) => {
-    console.log(data)
+  const onSubmit = async (formData: FormData) => {
+    try {
+      const response = await fetch("http://localhost:4000/user/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) {
+        const data = await response.json()
+        const errorKeys = Object.keys(data.errors)
+        errorKeys.forEach((key) => {
+          setError(key as keyof FormData, {
+            type: "manual",
+            message: data.errors[key],
+          })
+        })
+      } else {
+        // Direct user to home page
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
