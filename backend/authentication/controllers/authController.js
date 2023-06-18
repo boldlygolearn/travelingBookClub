@@ -30,14 +30,19 @@ module.exports.register_post = async (req, res) => {
       // secure: true, // Use this if your app is using HTTPS
       maxAge: 1000 * 60 * 24 * 90,
     })
-    return res.status(201).json({
+
+    res.status(201).json({
       status: "success",
       data: {
-        user,
+        user: {
+          id: user._id,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          email: user.email,
+        },
       },
     })
   } catch (error) {
-    console.log("error", error)
     const errors = handleErrors(error)
     res.status(400).json({
       errors,
