@@ -1,0 +1,10 @@
+{
+  "importOrder": [
+    "^react(.*)$",
+    "<THIRD_PARTY_MODULES>",
+    "^@mui/(.*)$"
+  ],
+  "semi": false,
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}
