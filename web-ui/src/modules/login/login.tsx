@@ -24,19 +24,34 @@ const Login = () => {
     control,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm<FormData>({
     resolver: yupResolver(schema),
     // mode: 'onChange',
     mode: "onSubmit",
   })
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = async (data: FormData) => {
     try {
-      fetch("http://localhost:4000/user/login", {
+      const response = await fetch("http://localhost:4000/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       })
+
+      if (!response.ok) {
+        const data = await response.json()
+        const errorKeys = Object.keys(data.errors)
+        errorKeys.forEach((key) => {
+          setError(key as keyof FormData, {
+            type: "manual",
+            message: data.errors[key],
+          })
+        })
+      } else {
+        console.log("success")
+        // direct to home page
+      }
     } catch (error) {
       console.log(error)
     }
