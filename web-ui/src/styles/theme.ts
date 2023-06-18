@@ -13,6 +13,7 @@ import { PaletteMode } from "@mui/material"
 export const getTheme = (mode: PaletteMode) =>
   createTheme({
     palette: {
+      mode,
       primary: {
         main: "#CAEBF2",
       },

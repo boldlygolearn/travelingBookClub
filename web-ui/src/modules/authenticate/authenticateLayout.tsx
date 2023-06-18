@@ -7,15 +7,7 @@ type AuthenticateLayoutProps = {
 }
 
 const AuthenticateLayout = ({ children }: AuthenticateLayoutProps) => (
-  <Box
-    // width="100%"
-    // height="100%"
-    display="flex"
-    // placeItems="center"
-    // placeItems="center"
-    justifyContent="center"
-    padding={2}
-  >
+  <Box display="flex" justifyContent="center" padding={2}>
     <Stack spacing={2}>
       <Header />
       {/* <Box minWidth={488}>{children}</Box> */}
