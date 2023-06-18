@@ -15,7 +15,6 @@ const handleErrors = (err) => {
 }
 
 module.exports.register_post = async (req, res) => {
-  console.log(req.body)
   const { email, password, firstName, lastName } = req.body
   try {
     const user = await User.create({
